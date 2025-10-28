@@ -1554,13 +1554,17 @@ footer{
     
     .nav-items{
         flex-direction: column;
-        gap: 25px;
+        gap: 5px;
         background: var(--card-bg);
         padding: 50px 70px;
         border-radius: 25px;
         box-shadow: var(--shadow-xl);
         transform: scale(0.9);
         transition: transform var(--transition-base);
+        position: absolute;
+        top: 40px;
+        right: 100px;
+        z-index: 1000;
     }
     
     .navigation.active .nav-items{
@@ -1829,7 +1833,7 @@ footer{
     }
     
     .nav-items{
-        padding: 35px 40px;
+        padding: 15px 25px;
     }
     
     .nav-items a{
@@ -2210,7 +2214,89 @@ footer{
     }
 }
 
+
 /*///////////////////////////*/
+    /* Dark Theme */
+    .dark-theme .nav-menu-btn{
+        background: var(--card-bg);
+    }
+    
+    .dark-theme .nav-menu-btn div{
+        background: var(--text-primary);
+    }
+    
+    .dark-theme .nav-menu-btn:hover{
+        background: var(--secondary-color);
+    }
+    
+    .dark-theme .nav-menu-btn:hover div{
+        background: white;
+    }
+    
+    .dark-theme .nav-close-btn{
+        background: var(--card-bg);
+        color: var(--text-primary);
+    }
+    
+    .dark-theme .nav-close-btn:hover{
+        background: var(--secondary-color);
+        color: white;
+    }
+
+/* Tablet */
+@media screen and (max-width: 768px){
+    .nav-close-btn{
+        top: 25px !important;
+        right: 25px !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.3em !important;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 520px){
+    
+    .nav-close-btn{
+        top: 20px !important;
+        right: 20px !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.2em !important;
+    }
+    
+    .nav-menu-btn{
+        width: 38px !important;
+        height: 38px !important;
+        gap: 4px !important;
+    }
+    
+    .nav-menu-btn div{
+        width: 18px !important;
+        height: 2.5px !important;
+    }
+    .nav-close-btn{
+        top: 15px !important;
+        right: 15px !important;
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.1em !important;
+    }
+    
+    .nav-menu-btn{
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
+
+/* Prevent body scroll when menu open */
+body.menu-open{
+    overflow: hidden;
+}
+
+/* ======================================================================== 
+   END OF MOBILE NAVIGATION FIX 
+   ======================================================================== */
 
 
 
