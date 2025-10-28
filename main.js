@@ -184,10 +184,10 @@ if (contactForm && formMessage) {
         fetch(formAction, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json', 
+                //'Content-Type': 'application/json', 
                 'Accept': 'application/json'      
             },
-            body: JSON.stringify(dataObject) 
+            body: formData//JSON.stringify(dataObject) 
         })
         .then(response => response.json()) 
         .then(data => {
