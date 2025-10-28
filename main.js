@@ -208,7 +208,7 @@ if (contactForm && formMessage) {
             
             setTimeout(() => {
                 formMessage.innerHTML = '';
-            }, 5000);
+            }, 3000);
         });
     });
 }
