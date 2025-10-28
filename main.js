@@ -159,59 +159,24 @@ navigation.addEventListener("click", (e) => {
     }
 });
 
-// Contact Form Submission (FormSubmit.co AJAX)
-const contactForm = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
+// Contact Form Submission 
 
-if (contactForm && formMessage) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); 
+<script>
+  (function(){
+      emailjs.init("-1Osgi7EMgZ9l3Or8"); // এখানে তোমার public key দাও
+  })();
 
-        const submitButton = contactForm.querySelector('.btn');
-        const originalText = submitButton.innerHTML;
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
 
-        const formData = new FormData(contactForm);
-        
-        const dataObject = {};
-        formData.forEach((value, key) => {
-            dataObject[key] = value;
-        });
-
-        const formAction = contactForm.getAttribute('action');
-
-        fetch(formAction, {
-            method: 'POST',
-            headers: {
-                //'Content-Type': 'application/json', 
-                'Accept': 'application/json'      
-            },
-            body: formData//JSON.stringify(dataObject) 
-        })
-        .then(response => response.json()) 
-        .then(data => {
-            if (data.success == 'true' || data.success == true) {
-                formMessage.innerHTML = "<div style='padding: 15px; background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 12px; font-weight: 600; margin-top: 20px;'><i class='fas fa-check-circle'></i> Message sent successfully! I'll get back to you soon.</div>";
-                contactForm.reset(); 
-            } else {
-                formMessage.innerHTML = "<div style='padding: 15px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border-radius: 12px; font-weight: 600; margin-top: 20px;'><i class='fas fa-exclamation-circle'></i> Oops! Something went wrong. Please try again.</div>";
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            formMessage.innerHTML = "<div style='padding: 15px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border-radius: 12px; font-weight: 600; margin-top: 20px;'><i class='fas fa-exclamation-circle'></i> Network error. Please check your connection.</div>";
-        })
-        .finally(() => {
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalText;
-            
-            setTimeout(() => {
-                formMessage.innerHTML = '';
-            }, 3000);
-        });
-    });
-}
+      emailjs.sendForm('service_y46w3j8', 'template_i6r2lrs', this)
+          .then(function() {
+              alert('✅ Message sent successfully!');
+          }, function(error) {
+              alert('❌ Failed to send message. Please try again.');
+          });
+  });
+</script>
 
 // ScrollReveal Animations
 ScrollReveal({
